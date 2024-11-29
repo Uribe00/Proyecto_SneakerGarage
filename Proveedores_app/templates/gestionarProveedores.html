@@ -1,0 +1,90 @@
+{% extends "base.html"%}
+{% load static %}
+{% block cuerpo %}
+<div class="row"><!--la fila-->
+<div class="col-sm-12 col-md-4 col-lg-4  col-xl-4"><!--columna izquierda-->
+    <h1>Registrar proveedores</h1>
+    <div class="card"><!--Tarjeta-->
+      <div class="card-body">
+        <form action="/registrarProveedor/" method="POST"> {% csrf_token %}<!--formulario-->
+
+          <div class="form-group">
+            <input type="number" id="txtid_proveedor" name="txtid_proveedor" class="form-control" placeholder="id" minLenght="6" maxLenght="6" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="nombre" maxLenght="100" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="numtelefono" name="numtelefono" class="form-control" placeholder="telefono" maxLenght="20" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txtproducto" name="txtproducto" class="form-control" placeholder="producto" maxLenght="100" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtmetodo_pago" name="txtmetodo_pago" class="form-control" placeholder="metodo_pago" maxLenght="100" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtemail" name="txtemail" class="form-control" placeholder="email" maxLenght="100" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtdireccion" name="txtdireccion" class="form-control" placeholder="direccion" maxLenght="100" required>
+          </div>
+          <div class="form-group">
+            <input type="date" id="txtfecha" name="txtfecha" class="form-control" placeholder="fecha de envio" maxLenght="100" required>
+          </div>
+          <div class="form-group">
+            <input type="number" id="txtid" name="txtid" class="form-control" placeholder="id de sucursal" maxLenght="100" required>
+          </div>
+
+
+          <div class="form-group py-2">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+</div>
+<div class="col-sm-12 col-md-4 col-lg-8 col-xl-8"><!--columna derecha-->
+    <h1>Listado de proveedores</h1>
+    <img class="rounded mx-auto d-block" src="{% static "img/tenis.jpg" %}" alt="alexis" />
+    <div class="table-responsive"> <!--tabla responsiva-->
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">id</th>
+                <th scope="col">nombre</th>
+                <th scope="col">telefono</th>
+                <th scope="col">producto</th>
+                <th scope="col">metodo_pago</th>
+                <th scope="col">email</th>
+                <th scope="col">direccion</th>
+                <th scope="col">fecha de ultimo envio</th>
+                <th scope="col">id_sucursal</th>
+                <th colspan="2">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for m in misproveedores %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{m.id_proveedor}}</td>
+                <td>{{m.nombre}}</td>
+                <td>{{m.telefono}}</td>
+                <td>{{m.producto}}</td>
+                <td>{{m.metodo_pago}}</td>
+                <td>{{m.email}}</td>
+                <td>{{m.direccion}}</td>
+                <td>{{m.fecha_ultimo_envio}}</td>
+                <td>{{m.id_sucursal}}</td>
+                <td><a href="seleccionarProveedor/{{m.id_proveedor}}" class="btn btn-info">Editar</td> <!--falta link-->
+                  <td><a href="borrarProveedor/{{m.id_proveedor}}" class="btn btn-danger">Borrar</td> <!--falta link-->
+                
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+</div>
+{% endblock %}
