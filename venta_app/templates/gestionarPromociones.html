@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <h1>Registrar Ventas</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarPromocion/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="number" id="txtid_ventas" name="txtid_ventas" class="form-control" placeholder="ID" minLength="6" maxLength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtcantidad" name="txtcantidad" class="form-control" placeholder="cantidad" maxLength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="txtprecio_total" name="txtprecio_total" class="form-control" placeholder="Precio total" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="txtventa_fecha" name="txtventa_fecha" class="form-control" placeholder="fecha de venta" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="txt" id="txtmetodo_pago" name="txtmetodo_pago" class="form-control" placeholder="metodo de pago" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-8">
+        <h1>Listado de Ventas</h1>
+        <img class="rounded mx-auto d-block" src="{% static "img/tenis.jpg" %}" alt="alexis" />
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">cantidad</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">fecha de ventas</th>
+                        <th scope="col">Metodo de pago</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in mispromociones %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ m.id_ventas }}</td>
+                        <td>{{ m.cantidad }}</td>
+                        <td>{{ m.precio_total }}</td>
+                        <td>{{ m.venta_fecha }}</td>
+                        <td>{{ m.metodo_pago }}</td>
+                        <td><a href="seleccionarPromocion/{{ m.id_ventas }}" class="btn btn-info">Editar</a></td>
+                        <td><a href="borrarPromocion/{{ m.id_ventas }}" class="btn btn-danger">Borrar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
