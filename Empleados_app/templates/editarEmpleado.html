@@ -1,0 +1,41 @@
+{% extends "base.html"%}
+
+{% block cuerpo %}
+<div class="row">
+<div class="col-md-4 offset-md-4">
+   <!--La tarjeta card-->
+   <div class="card"><!--Tarjeta-->
+      <div class="card-body">
+        <form action="/editarEmpleado/" method="POST"> {% csrf_token %}<!--formulario-->
+          <div class="form-group">
+            <input type="text" id="txtid_empleado" name="txtid_empleado" class="form-control" value={{misempleados.id_empleado}} minLenght="6" maxLenght="6" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtnombre" name="txtnombre" class="form-control"  value="{{misempleados.nombre}}" maxLenght="100" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtapellidos" name="txtapellidos" class="form-control"  value="{{misempleados.apellidos}}" maxLenght="20" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txttelefono" name="txttelefono" class="form-control"  value="{{misempleados.telefono}}" maxLenght="100" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtemail" name="txtemail" class="form-control"  value="{{misempleados.email}}" maxLenght="100" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtpuesto" name="txtpuesto" class="form-control"  value="{{misempleados.puesto}}" maxLenght="100" required>
+          </div>
+          <div class="form-group">
+            <input type="number" id="txtsalario" name="txtsalario" class="form-control"  value="{{misempleados.salario}}" maxLenght="100" required>
+          </div>
+          <div class="form-group py-2">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+
+        </form>
+      </div>
+
+</div><!--columna-->
+
+</div>
+{% endblock %}
