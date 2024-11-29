@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}
+    <title>Mi tienda de tenis</title>
+{% endblock titulo %}
+
+{% block cuerpo %}
+<!-- Sección principal con fondo claro y bordes suaves -->
+<div class="container-fluid" style="background-color: #f4f4f4; padding: 80px 0;">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        
+        <!-- Título con tipografía elegante y color oscuro -->
+        <h1 class="text-dark font-weight-bold mb-4" style="font-size: 3rem; letter-spacing: 2px; text-align: center;">Mi tienda de tenis</h1>
+        
+        <!-- Imagen centrada con bordes redondeados y sombra sutil -->
+        <img class="rounded shadow-lg" src="{% static 'img/tenis2.jpg' %}" alt="tenis" style="max-width: 90%; width: 600px; height: auto; border: 5px solid #ddd; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); margin-bottom: 40px;">
+        
+        <!-- Texto descriptivo más profesional, con mayor espacio -->
+        <p class="text-dark" style="font-size: 1.2rem; font-weight: 300; text-align: center; max-width: 800px; margin-bottom: 30px;">
+            Descubre una selección exclusiva de tenis diseñados para ofrecerte confort, estilo y durabilidad. Navega por nuestras opciones y encuentra el par perfecto para ti.
+        </p>
+
+        <!-- Botón de acción con color contrastante y bordes redondeados -->
+        <a href="/productos" class="btn btn-primary btn-lg" style="padding: 15px 30px; font-size: 1.1rem; border-radius: 30px;">Explorar productos</a>
+    </div>
+</div>
+
+<!-- Sección adicional con recomendaciones de productos -->
+<div class="container mt-5">
+    <div class="row">
+        <!-- Puedes añadir más contenido aquí, como productos destacados -->
+        <div class="col-12 text-center">
+            <h2 class="text-dark font-weight-bold">Productos Destacados</h2>
+            <p class="text-muted">Echa un vistazo a nuestros productos más populares.</p>
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}
