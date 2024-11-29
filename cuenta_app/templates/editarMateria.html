@@ -1,0 +1,42 @@
+{% extends "base.html"%}
+
+{% block cuerpo %}
+<div class="row">
+<div class="col-md-4 offset-md-4">
+   <!--La tarjeta card-->
+   <div class="card"><!--Tarjeta-->
+      <div class="card-body">
+        <form action="/editarmateria/" method="POST"> {% csrf_token %}<!--formulario-->
+          <div class="form-group">
+            <input type="text" id="txtid_cuenta" name="txtid_cuenta" class="form-control" value={{mismaterias.id_cuenta}} minLenght="6" maxLenght="6" readonly required>
+          </div>
+          <div class="form-group py-2">
+            <input type="text" id="txtid_usuario" name="txtid_usuario" class="form-control" value="{{mismaterias.id_usuario}}"  min="1" max="20" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{mismaterias.nombre}}"maxLenght="100" required>
+          </div>
+          <div class="form-group py-2">
+            <input type="text" id="txtcontrasena" name="txtcontrasena" class="form-control" value="{{mismaterias.contrasena}}"  min="1" max="9" required>
+          </div>
+          <div class="form-group py-2">
+            <input type="text" id="txttipo_usuario" name="txttipo_usuario" class="form-control" value="{{mismaterias.tipo_usuario}}"  min="1" max="20" required>
+          </div>
+          <div class="form-group py-2">
+            <input type="text" id="txtestado" name="txtestado" class="form-control" value="{{mismaterias.estado}}"  min="1" max="20" required>
+          </div>
+          <div class="form-group py-2">
+            <input type="date" id="txtfecha_creacion" name="txtfecha_creacion" class="form-control" value="{{mismaterias.fecha_creacion}}"  min="1" max="20" required>
+          </div>
+          
+          <div class="form-group py-2">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+
+        </form>
+      </div>
+
+</div><!--columna-->
+
+</div>
+{% endblock %}
